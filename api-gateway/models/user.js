@@ -6,6 +6,10 @@ var userSchema = new mongoose.Schema({ username: String,
 password: String, email: String
 });
 const User = module.exports = mongoose.model('User', userSchema);
+module.exports.getOne = (e, callback) => {
+    var query = {email: e};
+    User.findOne(query, callback);
+}
 module.exports.add = (user, callback) => {
     user.save(callback);
 }
