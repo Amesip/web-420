@@ -1,7 +1,9 @@
 /**
 * API Routes
 */
-var express = require('express'); var router = express.Router();
+var express = require('express'); 
+var router = express.Router();
+var checkToken = require('../check-token'); 
 var auth_controller = require('../controllers/authController');
 
 // POST request for registering a user 
@@ -13,8 +15,7 @@ router.post('/auth/login', auth_controller.user_login);
 
 // GET request for verifying user tokens 
 
-router.get('/auth/token',
-auth_controller.user_token);
+router.get('/auth/token', checkToken, auth_controller.user_token); 
 
 router.get('/auth/logout', auth_controller.user_logout);
 
